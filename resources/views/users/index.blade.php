@@ -16,7 +16,18 @@
             @endif
         </div>
         <div class="card-header">
-            <a href="{{ route('users.create') }}" class="float-right">Create</a>
+            <div class="row">
+                <div class="col">
+                    <form class="d-flex" method="GET" action="{{ route('users.index') }}">
+                        <input class="form-control me-2" name="search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+
+                <a href="{{ route('users.create') }}" class="btn btn-outline-primary float-right">Create</a>
+            </div>
+
         </div>
         <div class="card-body">
             <table class="table">
