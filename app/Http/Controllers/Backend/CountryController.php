@@ -6,6 +6,7 @@ use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CountryStoreRequest;
+use App\Http\Requests\CountryUpdateRequest;
 
 class CountryController extends Controller
 {
@@ -27,5 +28,17 @@ class CountryController extends Controller
         Country::create($request->validated());
 
         return redirect()->route('countries.index')->with('message', 'Country Created Successfully');
+    }
+    public function edit(Country $country)
+    {
+        return view('countries.edit', compact('country'));
+    }
+    public function update(CountryUpdateRequest $request, Country $country)
+    {
+        $country->update([
+            'country_code' => $request['country_code'],
+            'name' => $request['name']
+        ]);
+        return redirect()->route('countries.index')->with('message','Country Updated succesfuly');
     }
 }
