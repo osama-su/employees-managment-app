@@ -12,7 +12,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Edit Country') }}</div>
+                    <div class="card-header">{{ __('Edit Country') }}
+                        <a href="{{ route('countries.index') }}" class="float-right">Back</a>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('countries.update', $country->id) }}">
